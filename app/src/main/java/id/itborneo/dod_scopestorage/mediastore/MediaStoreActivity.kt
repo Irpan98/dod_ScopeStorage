@@ -23,14 +23,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import id.itborneo.dod_scopestorage.MainActivityViewModel
 import id.itborneo.dod_scopestorage.R
 import androidx.lifecycle.Observer as Observer1
 
 
-private const val READ_EXTERNAL_STORAGE_REQUEST = 0x1045
 
-private const val DELETE_PERMISSION_REQUEST = 0x1033
 
 class MediaStoreActivity : AppCompatActivity() {
 
@@ -104,6 +101,7 @@ class MediaStoreActivity : AppCompatActivity() {
                 }
                 return
             }
+
         }
     }
 
@@ -145,7 +143,6 @@ class MediaStoreActivity : AppCompatActivity() {
         }
     }
 
-
     private fun haveStoragePermission() =
         ContextCompat.checkSelfPermission(
             this,
@@ -158,7 +155,9 @@ class MediaStoreActivity : AppCompatActivity() {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
-            ActivityCompat.requestPermissions(this, permissions, READ_EXTERNAL_STORAGE_REQUEST)
+            ActivityCompat.requestPermissions(this, permissions,
+                READ_EXTERNAL_STORAGE_REQUEST
+            )
         }
     }
 
@@ -177,7 +176,7 @@ class MediaStoreActivity : AppCompatActivity() {
 
 
     private inner class GalleryAdapter(val onClick: (MediaStoreImage) -> Unit) :
-        ListAdapter<MediaStoreImage, ImageViewHolder>(MediaStoreImage.DiffCallback) {
+        ListAdapter<MediaStoreImage, GalleryAdapter.ImageViewHolder>(MediaStoreImage.DiffCallback) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
@@ -195,21 +194,24 @@ class MediaStoreActivity : AppCompatActivity() {
                 .centerCrop()
                 .into(holder.imageView)
         }
-    }
-}
 
-/**
- * Basic [RecyclerView.ViewHolder] for our gallery.
- */
-private class ImageViewHolder(view: View, onClick: (MediaStoreImage) -> Unit) :
-    RecyclerView.ViewHolder(view) {
-    val rootView = view
-    val imageView: ImageView = view.findViewById(R.id.image)
+        inner class ImageViewHolder(view: View, onClick: (MediaStoreImage) -> Unit) :
+            RecyclerView.ViewHolder(view) {
+            val rootView = view
+            val imageView: ImageView = view.findViewById(R.id.image)
 
-    init {
-        imageView.setOnClickListener {
-            val image = rootView.tag as? MediaStoreImage ?: return@setOnClickListener
-            onClick(image)
+            init {
+                imageView.setOnClickListener {
+                    val image = rootView.tag as? MediaStoreImage ?: return@setOnClickListener
+                    onClick(image)
+                }
+            }
         }
     }
+
+    companion object {
+        private const val READ_EXTERNAL_STORAGE_REQUEST = 0x1045
+        const val DELETE_PERMISSION_REQUEST = 0x1033
+    }
 }
+

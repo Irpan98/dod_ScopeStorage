@@ -15,5 +15,5 @@
     <string name="delete_dialog_positive">Delete</string>
     <string name="delete_dialog_negative">Cancel</string>
     <string name="example_media_store">example app : Music Player, Video Player, etc</string>
-    <string name="example_saf">Example App: Gmail</string>
+    <string name="example_saf">Example : Gmail, accessing files in download, etc </string>
 </resources>

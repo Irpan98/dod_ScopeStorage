@@ -32,12 +32,6 @@
             app:layout_constraintTop_toTopOf="@+id/top_guideline"
             tools:visibility="visible">
 
-            <ImageView
-                android:id="@+id/locked"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:importantForAccessibility="no"
-                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/permission_required_text"
@@ -69,12 +63,6 @@
             app:layout_constraintTop_toTopOf="@+id/top_guideline"
             tools:visibility="visible">
 
-            <ImageView
-                android:id="@+id/photo_album"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:importantForAccessibility="no"
-                android:src="@mipmap/ic_launcher" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/open_album"
