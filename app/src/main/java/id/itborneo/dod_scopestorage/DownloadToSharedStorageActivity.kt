@@ -84,11 +84,8 @@ class DownloadToSharedStorageActivity : AppCompatActivity() {
 
     private fun downloadImageToDownloadFolder() {
         val mgr = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-
         val downloadUri = Uri.parse(downloadImageUrl)
-        val request = DownloadManager.Request(
-            downloadUri
-        )
+        val request = DownloadManager.Request(downloadUri)
         request.setAllowedNetworkTypes(
             DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE
         )
@@ -99,14 +96,9 @@ class DownloadToSharedStorageActivity : AppCompatActivity() {
                 "dod_image_to_shared_storage.jpg"
             )
 
-        Toast.makeText(
-            applicationContext,
-            "Download successfully to ${downloadUri?.path}",
-            Toast.LENGTH_LONG
+        Toast.makeText(applicationContext, "Download successfully to ${downloadUri?.path}", Toast.LENGTH_LONG
         ).show()
-
         mgr.enqueue(request)
-
     }
 
     override fun onRequestPermissionsResult(
