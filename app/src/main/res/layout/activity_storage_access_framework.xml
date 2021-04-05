@@ -4,17 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".saf.StorageAccessFrameworkActivity">
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/btn_create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="create file" />
+        android:text="Create File" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/btn_open"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="open file" />
+        android:text="Open File" />
 </LinearLayout>

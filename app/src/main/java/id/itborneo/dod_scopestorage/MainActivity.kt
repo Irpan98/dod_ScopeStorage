@@ -13,6 +13,12 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        findViewById<Button>(R.id.btn_app_1).setOnClickListener {
+            val intent = Intent(this, DownloadToSharedStorageActivity::class.java)
+            startActivity(intent)
+
+        }
+
         findViewById<Button>(R.id.btn_app_2).setOnClickListener {
             val intent = Intent(this, MediaStoreActivity::class.java)
             startActivity(intent)
