@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import id.itborneo.dod_scopestorage.saf.FileActivity
 import id.itborneo.dod_scopestorage.R
+import id.itborneo.dod_scopestorage.saf.FileActivity
 
 class StorageAccessFrameworkActivity : AppCompatActivity() {
 
@@ -33,6 +33,9 @@ class StorageAccessFrameworkActivity : AppCompatActivity() {
     private fun openFile() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             type = "application/pdf"
+            type = "application/jpg"
+            type = "application/png"
+            type = "application/jpeg"
             addCategory(Intent.CATEGORY_OPENABLE)
             //Adding Read URI permission
             flags = flags or Intent.FLAG_GRANT_READ_URI_PERMISSION
